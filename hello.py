@@ -175,7 +175,7 @@ while attempts < max_attempts:
         attempts += 1
 if attempts == max_attempts:
     print("Access denied.")
-"""
+
 
 import random
 N = int(input("Enter the number of random points to generate: "))
@@ -187,3 +187,45 @@ for i in range(N):
         circle += 1
 pi_approx = 4 * circle / N
 print("Approximation of pi:", pi_approx)
+
+
+import random
+num_dice = int(input("How many dice do you want to roll? "))
+total = 0
+for i in range(num_dice):
+    roll = random.randint(1, 6)
+    total += roll
+print("The sum of the dice is:", total)
+
+
+numbers = []
+while True:
+    user = input("Enter a number: ")
+    if user == "":
+        break
+    num = float(user)
+    numbers.append(num)
+numbers.sort(reverse=True)
+print("The five greatest numbers are:", numbers[:5])
+
+
+num = int(int(input("Enter a integer: ")))
+if num < 2:
+    print(num, "is not a prime number.")
+else:
+    prime = True
+    for i in range(2, num):
+        if num % i == 0:
+            prime = False
+            break
+if prime:
+    print(num, "is a prime number. ")
+else:
+    print(num, "is not a prime number. ")
+"""
+
+cities = []
+for i in range(5):
+    city = input("Enter a name of a city: ")
+    cities.append(city)
+print("The cities you entered are:", cities)
