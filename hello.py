@@ -257,7 +257,7 @@ while True:
     else:
         print("New name")
         names.add(name)
-"""
+
 
 airports = {}
 while True:
@@ -287,3 +287,59 @@ while True:
     else:
         print("Invalid number, please try again.")
 
+
+import random
+def roll_dice():
+    return random.randint(1, 6)
+while True:
+    result = roll_dice()
+    print("You rolled:", result)
+    if result == 6:
+        break
+
+
+import random
+def roll_dice(sides):
+    return random.randint(1, sides)
+sides = int(input("Enter the number of sides on the dice: "))
+while True:
+    result = roll_dice(sides)
+    print("You rolled:", result)
+    if result == sides:
+        break
+
+
+def gallon_to_liters(gallons):
+    return gallons * 3.78541
+while True:
+    gallons = float(input("Enter volume in gallons: "))
+
+    if gallons < 0:
+        print("Goodbye!")
+        break
+
+    liters = gallon_to_liters(gallons)
+    print(f"{gallons} gallon is {liters:.2f} liters")
+
+
+def sum_list(numbers):
+    total = 0
+    for n in numbers:
+        total += n
+        return total
+my_list = [3, 7, 2, 8, 5]
+result = sum_list(my_list)
+print("The sum of", my_list, "is", result)
+"""
+
+def remove_odds(numbers):
+    evens = []
+    for n in numbers:
+        if n % 2 == 0:
+            evens.append(n)
+    return evens
+
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+filtered_list = remove_odds(my_list)
+print("Original list:", my_list)
+print("Even numbers only:", filtered_list)
