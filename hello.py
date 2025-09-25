@@ -222,10 +222,67 @@ if prime:
     print(num, "is a prime number. ")
 else:
     print(num, "is not a prime number. ")
-"""
+
 
 cities = []
 for i in range(5):
     city = input("Enter a name of a city: ")
     cities.append(city)
 print("The cities you entered are:", cities)
+
+
+season = ("Autumn", "Spring", "Winter", "Summer")
+
+month = int(input("Enter the number of a month: "))
+if month in (9, 10, 11):
+    seasons = season[3]
+elif month in (3, 4, 5):
+    seasons = season[1]
+elif month in (12, 1, 2):
+    seasons = season[0]
+elif month in (6, 7, 8):
+    seasons = season[2]
+else:
+    seasons = "Invalid month number."
+print("The season is: ", seasons)
+
+
+names = set()
+while True:
+    name = input("Enter a name: ")
+    if name == "":
+        break
+    if name in names:
+        print("Existing name")
+    else:
+        print("New name")
+        names.add(name)
+"""
+
+airports = {}
+while True:
+    print("Choose an option: ")
+    print("1 = Enter a new airport")
+    print("2 = Fetch airport information")
+    print("3 = Quit")
+
+    choice = input("Your choice: ")
+    if choice == "1":
+        icao = input("Enter ICAO code: ").upper()
+        name = input("Enter airport name: ")
+        airports[icao] = name
+        print("Airport added.")
+
+    elif choice == "2":
+        icao = input("Enter ICAO code: ").upper()
+        if icao in airports:
+            print("Airport name", airports[icao])
+        else:
+            print("No airport found with this ICAO code.")
+
+    elif choice == "3":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid number, please try again.")
