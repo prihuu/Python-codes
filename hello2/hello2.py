@@ -70,7 +70,7 @@ hotel.dog_checkin(dog3)
 hotel.greet_dogs()
 hotel.dog_checkout(dog2)
 hotel.greet_dogs()
-"""
+
 
 class Student:
     def __init__(self, name, age, gender, birth_year, sound = "Yapa yapa"):
@@ -113,3 +113,74 @@ teacher.student_in_class(student5)
 teacher.greet_students()
 teacher.student_not_in_class(student1)
 teacher.greet_students()
+"""
+
+#Base class
+class Animal:
+    def __init__(self, name, species, sound = "Meow meow"):
+        self.name = name
+        self.species = species
+        self.sound = sound
+
+    def print_info(self):
+        print(f" The name of the animal is {self.name} and the species is a {self.species}")
+
+#Subclasses
+class Lion(Animal):
+    def __init__(self, name, species, sound = "Roar roar"):
+        self.species = species
+        self.sound = sound
+        super().__init__(name, species, sound)
+
+    def print_info(self):
+        super().print_info()
+
+class Elephant(Animal):
+    def __init__(self, name, species, sound = "Trööt trööt"):
+        self.species = species
+        self.sound = sound
+        super().__init__(name, species, sound)
+
+    def print_info(self):
+        super().print_info()
+
+
+class Snake(Animal):
+    def __init__(self, name, species, sound = "Shh shh"):
+        self.species = species
+        self.sound = sound
+        super().__init__(name, species, sound)
+
+    def print_info(self):
+        super().print_info()
+
+
+#Adding zoo
+class Zoo:
+    def __init__(self):
+        self.animals = []
+    def animal_in_zoo(self, animal):
+        self.animals.append(animal)
+        print(f"{animal.sound} in zoo")
+        return
+    def print_all(self):
+        for a in self.animals:
+            a.print_info()
+
+#Main program
+ani1 = Animal("Tara", "bird")
+
+lion1 = Lion("Princess", "Mammal")
+
+ele1 = Elephant("Joshua", "Mammal")
+
+sna1 = Snake("Radin", "Reptile")
+
+print("There are four (4) animals in the zoo! ")
+zoo = Zoo()
+zoo.animal_in_zoo(ani1)
+zoo.animal_in_zoo(lion1)
+zoo.animal_in_zoo(ele1)
+zoo.animal_in_zoo(sna1)
+
+zoo.print_all()
