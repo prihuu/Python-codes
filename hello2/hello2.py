@@ -113,7 +113,7 @@ teacher.student_in_class(student5)
 teacher.greet_students()
 teacher.student_not_in_class(student1)
 teacher.greet_students()
-"""
+
 
 #Base class
 class Animal:
@@ -184,3 +184,76 @@ zoo.animal_in_zoo(ele1)
 zoo.animal_in_zoo(sna1)
 
 zoo.print_all()
+
+"""
+
+#Python module 9
+import random
+class Car:
+    def __init__(self, registration_number, maximum_speed):
+        self.registration_number = registration_number
+        self.maximum_speed = maximum_speed
+        self.current_speed = 0
+        self.travelled_distance = 0
+
+    def accelerate(self, change):
+        self.current_speed += change
+        if self.current_speed > self.maximum_speed:
+            self.current_speed = self.maximum_speed
+        if self.current_speed < 0:
+            self.current_speed = 0
+
+    def drive(self, hours):
+        self.travelled_distance += self.current_speed * hours
+
+#creating 10 cars
+cars = []
+for i in range(1, 11):
+    registration_number = (f"ABC-{i}")
+    maximum_speed = random.randint(100, 200)
+    cars.append(Car(registration_number, maximum_speed))
+
+#race
+race_over = False
+hours_passed = 0
+while not race_over:
+    hours_passed += 1
+
+    for car in cars:
+        speed_change = random.randint(-10, 15)
+        car.accelerate(speed_change)
+        car.drive(1)
+
+        if car.travelled_distance >= 10000:
+            race_over = True
+
+print(f"Race over, hours passed: {hours_passed} hours!")
+for car in cars:
+    print(car.registration_number, car.maximum_speed, car.current_speed, round(car.travelled_distance, 1))
+
+#creating new car
+#car = Car("ABC-123", 142)
+
+#acceleration
+#car.accelerate(30)
+#car.accelerate(70)
+#car.accelerate(50)
+
+#print(f"Current speed after accelerating: {car.current_speed} km/h")
+
+#drive for 1.5h
+#car.drive(1.5)
+#print(f"Travelled distance: {car.travelled_distance} km/h")
+
+#emergency brake
+#car.accelerate(-200)
+#print(f"Final speed after emergency brake: {car.current_speed} km/h")
+
+#print("Car details:")
+#print(f"Registration number: {car.registration_number}")
+#print(f"Maximum speed: {car.maximum_speed} km/h")
+#print(f"Current speed: {car.current_speed} km/h")
+#print(f"Travelled distance: {car.travelled_distance} km/h")
+
+
+
