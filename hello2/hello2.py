@@ -185,7 +185,7 @@ zoo.animal_in_zoo(sna1)
 
 zoo.print_all()
 
-"""
+
 
 #Python module 9
 import random
@@ -254,6 +254,115 @@ for car in cars:
 #print(f"Maximum speed: {car.maximum_speed} km/h")
 #print(f"Current speed: {car.current_speed} km/h")
 #print(f"Travelled distance: {car.travelled_distance} km/h")
+"""
 
+
+#Python module 10
+import random
+class Car:
+    def __init__(self, registration_number, maximum_speed):
+        self.registration_number = registration_number
+        self.maximum_speed = maximum_speed
+        self.current_speed = 0
+        self.travelled_distance = 0
+
+    def accelerate(self, change):
+        self.current_speed += change
+        if self.current_speed > self.maximum_speed:
+            self.current_speed = self.maximum_speed
+        if self.current_speed < 0:
+            self.current_speed = 0
+
+    def drive(self, hours):
+        self.travelled_distance += self.current_speed * hours
+
+class Race:
+    def __init__(self, name, distance, cars):
+        self.name = name
+        self.distance = distance
+        self.cars = cars
+
+    def hours_passed(self):
+        for car in self.cars:
+            change = random.randint(-10, 15)
+            car.accelerate(change)
+            car.drive(1)
+
+    def print_status(self):
+        print(f"Race: {self.name}")
+        for car in self.cars:
+            print(f"{car.registration_number}: speed {car.current_speed} km/h, distance {int(car.travelled_distance)} km/h")
+
+    def race_finished(self):
+        for car in self.cars:
+            if car.travelled_distance >= self.distance:
+                return True
+        return False
+
+
+class Elevator:
+    def __init__(self, bottom, top):
+        self.bottom = bottom
+        self.top = top
+        self.current_floor = bottom
+
+    def floor_up(self):
+        if self.current_floor < self.top:
+            self.current_floor += 1
+            print(f"Elevator is at floor: {self.current_floor}")
+
+    def floor_down(self):
+        if self.current_floor > self.bottom:
+            self.current_floor -= 1
+            print(f"Elevator is at floor: {self.current_floor}")
+
+    def go_to_floor(self, target):
+        while self.current_floor < target:
+            self.floor_up()
+        while self.current_floor > target:
+            self.floor_down()
+
+class Building:
+    def __init__(self, bottom, top, num_elevators):
+        self.elevators = []
+        for i in range(num_elevators):
+            self.elevators.append(Elevator(bottom, top))
+
+    def run_elevator(self, elevator_num, floor):
+        print(f"Elevator {elevator_num} is now at floor: {floor}")
+        elevator = self.elevators[elevator_num - 1]
+        elevator.go_to_floor(floor)
+
+    def fire_alarm(self):
+        print("Fire alarm, all elevators returning to the first floor!")
+        for elevator in self.elevators:
+            elevator.go_to_floor(elevator.bottom)
+
+#Main program
+cars = []
+for i in range(1, 11):
+    registration_number = (f"ABC-{i}")
+    maximum_speed = random.randint(100, 200)
+    cars.append(Car(registration_number, maximum_speed))
+
+race = Race("Grand Demolition Derby", 8000, cars)
+
+hours = 0
+while not race.race_finished():
+    race.hours_passed()
+    hours += 1
+    if hours % 10 == 0:
+        race.print_status()
+
+print(f"Race finished, hours passed: {hours} hours!")
+
+building = Building(1, 10, 3)
+building.run_elevator(1, 5)
+building.run_elevator(2, 8)
+#elevator = Elevator(1, 10)
+
+#elevator.go_to_floor(5)
+
+#elevator.go_to_floor(1)
 
 
